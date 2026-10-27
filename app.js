@@ -603,7 +603,7 @@ function buildShareText() {
     day: "numeric", month: "long", year: "numeric",
   }).format(new Date(year, month - 1, day, 12));
   const score = guesses.at(-1) === targetIndex ? `${guesses.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`;
-  return `${rows.join("\n")}\nBreedGuessle (${date}) ${score}`;
+  return `${rows.join("\n")}\nBreedGuessle (${date}) ${score}\nhttps://le-shammer.github.io/breedguessle/`;
 }
 
 async function shareResult() {

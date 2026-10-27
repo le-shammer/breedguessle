@@ -1,0 +1,106 @@
+{
+  "1": {
+    "name": "Hütehunde und Treibhunde",
+    "sections": {
+      "1": "Schäferhunde",
+      "2": "Treibhunde (ausgenommen Schweizer Sennenhunde)"
+    }
+  },
+  "2": {
+    "name": "Pinscher und Schnauzer – Molosser – Schweizer Sennenhunde",
+    "sections": {
+      "1": "Pinscher und Schnauzer",
+      "1.1": "Pinscher",
+      "1.2": "Schnauzer",
+      "1.3": "Smoushond",
+      "1.4": "Russischer Schwarzer Terrier",
+      "2.1": "Doggenartige Hunde",
+      "2.2": "Berghunde",
+      "3": "Schweizer Sennenhunde"
+    }
+  },
+  "3": {
+    "name": "Terrier",
+    "sections": {
+      "1": "Hochläufige Terrier",
+      "2": "Niederläufige Terrier",
+      "3": "Bullartige Terrier",
+      "4": "Zwerg-Terriers"
+    }
+  },
+  "4": {
+    "name": "Dachshunde",
+    "sections": {
+      "1": "Dachshund"
+    }
+  },
+  "5": {
+    "name": "Spitze und Hunde vom Urtyp",
+    "sections": {
+      "1": "Nordische Schlittenhunde",
+      "2": "Nordische Jagdhunde",
+      "3": "Nordische Wach- und Hütehunde",
+      "4": "Europäische Spitze",
+      "5": "Asiatische Spitze und verwandte Rassen",
+      "6": "Urtyp",
+      "7": "Urtyp – Hunde zur jagdlichen Verwendung"
+    }
+  },
+  "6": {
+    "name": "Laufhunde, Schweißhunde und verwandte Rassen",
+    "sections": {
+      "1": "Laufhunde",
+      "1.1": "Große Laufhunde",
+      "1.2": "Mittelgroße Laufhunde",
+      "1.3": "Kleine Laufhunde",
+      "2": "Schweißhunde",
+      "3": "Verwandte Rassen"
+    }
+  },
+  "7": {
+    "name": "Vorstehhunde",
+    "sections": {
+      "1.1": "Kontinentale Vorstehhunde – Typ Braque",
+      "1.2": "Kontinentale Vorstehhunde – Typ Spaniel",
+      "1.3": "Kontinentale Vorstehhunde – Typ Griffon",
+      "2.1": "Britische und Irische Vorstehhunde – Pointer",
+      "2.2": "Britische und Irische Vorstehhunde – Setter"
+    }
+  },
+  "8": {
+    "name": "Apportierhunde – Stöberhunde – Wasserhunde",
+    "sections": {
+      "1": "Apportierhunde",
+      "2": "Stöberhunde",
+      "3": "Wasserhunde"
+    }
+  },
+  "9": {
+    "name": "Gesellschafts- und Begleithunde",
+    "sections": {
+      "1.1": "Bichons",
+      "1.2": "Coton de Tuléar",
+      "1.3": "Petit chien lion",
+      "2": "Pudel",
+      "3": "Kleine belgische Hunderassen – Griffons",
+      "3.1": "Griffons",
+      "3.2": "Petit Brabançon",
+      "4": "Haarlose Hunde",
+      "5": "Tibetanische Hunderassen",
+      "6": "Chihuahueño",
+      "7": "Englische Gesellschaftsspaniel",
+      "8": "Japanische Spaniel und Pekingesen",
+      "9": "Kontinentaler Zwergspaniel und andere",
+      "10": "Kromfohrländer",
+      "11": "Kleine doggenartige Hunde"
+    }
+  },
+  "10": {
+    "name": "Windhunde",
+    "sections": {
+      "1": "Langhaarige oder befederte Windhunde",
+      "2": "Rauhhaarige Windhunde",
+      "3": "Kurzhaarige Windhunde"
+    }
+  }
+}

@@ -16,12 +16,12 @@
       --ink: #F3F0F4;
       --muted: #B1ACB8;
       --brand: #F47A38;
-      --right-bg: #DCEAF8;
-      --right-ink: #244F73;
+      --right-bg: #2563EB;
+      --right-ink: #FFFFFF;
       --near-bg: #D9B525;
       --near-ink: #292515;
-      --wrong-bg: #ECE4F5;
-      --wrong-ink: #59426D;
+      --wrong-bg: #DC2626;
+      --wrong-ink: #FFFFFF;
       --unknown-bg: #3A3740;
       --unknown-ink: #D4CFD9;
       --line: #45414B;
@@ -252,8 +252,6 @@
       font: 700 23px/1.1 var(--heading);
     }
 
-    .board-note { color: var(--muted); font-size: 13px; }
-
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -445,8 +443,7 @@
     .round-result h2 { margin: 0 0 4px; }
     .round-result #result-detail { margin: 0; color: var(--muted); font-size: 13px; }
     .result-image-wrap { margin: 12px 0 0; }
-    .result-image-link { display: inline-block; line-height: 0; }
-    .result-image { display: block; max-width: 100%; max-height: 320px; object-fit: contain; }
+    .result-image { display: block; max-width: 100%; max-height: 320px; object-fit: contain; transition: filter 300ms ease; }
     .share-button {
       margin-top: 12px;
       padding: 8px 13px;
@@ -459,20 +456,24 @@
     }
 
     .rules {
-      margin-top: 18px;
-      border-top: 1px solid var(--line);
+      margin: 0 0 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
       color: var(--muted);
       font-size: 13px;
     }
 
     .rules summary {
       width: fit-content;
-      padding: 9px 0;
+      margin-bottom: 8px;
       color: var(--ink);
+      font: 700 23px/1.1 var(--heading);
       cursor: pointer;
     }
 
     .rules p { max-width: 440px; margin: 0 0 8px; }
+    .rules ul { margin: 0 0 8px; padding-left: 20px; }
+    .rules li { margin-bottom: 4px; }
 
     footer {
       display: flex;
@@ -514,7 +515,6 @@
       .suggestion-meta { font-size: 10px; text-align: right; }
       .board-head { margin: 0 0 7px; }
       h2 { font-size: 20px; }
-      .board-note { display: none; }
       .legend { gap: 7px 10px; margin-bottom: 7px; }
       .legend li { gap: 4px; font-size: 0; }
       .legend-mark { width: 22px; height: 22px; font-size: 14px; }
@@ -548,6 +548,19 @@
   </header>
 
   <main>
+    <details class="rules">
+      <summary>Anleitung</summary>
+      <p>Finde die heutige Hunderasse! Fast jede vom FCI anerkannte Hunderasse kann vorkommen. Nach jedem Versuch erfährst du, wie nah du dran warst.</p>
+      <p>Ein gelber Kasten heißt, dass du nah dran warst. Für die einzelnen Kategorien heißt das:</p>
+      <ul>
+        <li><strong>Herkunft:</strong> Richtiger Kontinent, falsches Land</li>
+        <li><strong>Gruppe / Sek.:</strong> Richtige Gruppe, falsche Sektion</li>
+        <li><strong>Größe cm:</strong> Irgendwo zwischen Minimal- und Maximalgröße, aber nicht genau in der Mitte (oder +/-10%, wenn keine Spanne angegeben ist)</li>
+        <li><strong>Gewicht kg:</strong> Genau wie Größe. Achtung: Viele Rassenprofile haben kein Idealgewicht angegeben. Hier steht dann „unbekannt“.</li>
+      </ul>
+      <p>Die Bilder und Informationen kommen von Wikipedia.</p>
+    </details>
+
     <section class="game-heading" aria-labelledby="page-title">
       <div>
         <p class="eyebrow">Das tägliche Rasserätsel</p>
@@ -577,7 +590,6 @@
     <section aria-labelledby="board-title">
       <div class="board-head">
         <h2 id="board-title">Deine Tipps</h2>
-        <span class="board-note">Pro Tag ein Rätsel</span>
       </div>
 
       <ul class="legend" aria-label="Ergebnislegende">
@@ -606,23 +618,16 @@
           </tbody>
         </table>
       </div>
-      <section class="round-result" id="round-result" aria-live="polite" hidden>
-        <p class="eyebrow" id="result-eyebrow"></p>
-        <h2 id="result-title"></h2>
-        <p id="result-detail"></p>
+      <section class="round-result" id="round-result" aria-live="polite">
+        <p class="eyebrow" id="result-eyebrow" hidden></p>
+        <h2 id="result-title" hidden></h2>
+        <p id="result-detail" hidden></p>
         <figure class="result-image-wrap" id="result-image-wrap" hidden>
-          <a class="result-image-link" id="result-image-link" target="_blank" rel="noopener noreferrer">
-            <img class="result-image" id="result-image" alt="">
-          </a>
+          <img class="result-image" id="result-image" alt="">
         </figure>
         <button class="share-button" id="share-button" type="button" hidden>Ergebnis teilen</button>
       </section>
     </section>
-
-    <details class="rules" id="rules-panel">
-      <summary>Spielregeln</summary>
-      <p>Finde die gesuchte Rasse in sechs Tipps. Herkunft, FCI-Gruppe und Messwerte geben Hinweise. Pfeile zeigen bei Größe und Gewicht die Richtung. Ein neues Rätsel erscheint am nächsten Kalendertag.</p>
-    </details>
 
     <footer>
       <span>BreedGuessle · Ein neues Rätsel jeden Tag</span>

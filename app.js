@@ -90,7 +90,6 @@ const elements = {
   resultTitle: document.querySelector("#result-title"),
   resultDetail: document.querySelector("#result-detail"),
   resultImage: document.querySelector("#result-image"),
-  resultImageLink: document.querySelector("#result-image-link"),
   resultImageWrap: document.querySelector("#result-image-wrap"),
   shareButton: document.querySelector("#share-button"),
 };
@@ -494,13 +493,15 @@ function updateAttempts() {
 }
 
 function loadTargetImage(breed, breedIndex) {
+  if (targetIndex !== breedIndex || !breed.image_url) return;
+
+  const blurAmount = Math.max(0, 20 - guesses.length * 4);
+  elements.resultImage.style.filter = `blur(${blurAmount}px)`;
   if (requestedImageIndex === breedIndex) return;
-  if (targetIndex !== breedIndex || guesses.length < 5 || !breed.image_url) return;
 
   requestedImageIndex = breedIndex;
   elements.resultImage.src = breed.image_thumbnail_url ?? breed.image_url;
   elements.resultImage.alt = "Bildhinweis zur gesuchten Hunderasse";
-  elements.resultImageLink.href = breed.image_url;
   elements.resultImageWrap.hidden = false;
 }
 
@@ -519,29 +520,26 @@ function renderGame() {
 
   const solved = guesses.at(-1) === targetIndex;
   completed = solved || guesses.length >= MAX_GUESSES;
+  const target = breeds[targetIndex];
   elements.input.disabled = completed;
   elements.submit.disabled = completed || !Number.isInteger(Number(elements.input.dataset.selectedIndex));
   elements.shareButton.hidden = !completed;
+  elements.resultEyebrow.hidden = !completed;
+  elements.resultTitle.hidden = !completed;
+  elements.resultDetail.hidden = !completed;
+  loadTargetImage(target, targetIndex);
 
-  if (completed || guesses.length >= 5) {
-    const target = breeds[targetIndex];
-    elements.result.hidden = false;
-    elements.resultEyebrow.hidden = !completed;
-    elements.resultTitle.hidden = !completed;
-    elements.resultDetail.hidden = !completed;
-    if (completed) {
-      elements.resultEyebrow.textContent = solved ? "Rätsel gelöst" : "Tagesrätsel beendet";
-      elements.resultTitle.textContent = target.name;
-      const labels = classificationLabels(target);
-      const fciText = labels
-        ? `Gruppe ${target.gruppe} ${labels.group} · Sektion ${target.sektion} ${labels.section}`
-        : "FCI-Gruppe/Sektion unbekannt";
-      elements.resultDetail.textContent = `${target.herkunftsland ?? "Herkunft unbekannt"} · ${fciText}`;
-      elements.live.textContent = solved
-        ? `Richtig. ${target.name} in ${guesses.length} Versuchen gefunden.`
-        : `Keine Versuche mehr. Gesucht war ${target.name}.`;
-    }
-    loadTargetImage(target, targetIndex);
+  if (completed) {
+    elements.resultEyebrow.textContent = solved ? "Rätsel gelöst" : "Tagesrätsel beendet";
+    elements.resultTitle.textContent = target.name;
+    const labels = classificationLabels(target);
+    const fciText = labels
+      ? `Gruppe ${target.gruppe} ${labels.group} · Sektion ${target.sektion} ${labels.section}`
+      : "FCI-Gruppe/Sektion unbekannt";
+    elements.resultDetail.textContent = `${target.herkunftsland ?? "Herkunft unbekannt"} · ${fciText}`;
+    elements.live.textContent = solved
+      ? `Richtig. ${target.name} in ${guesses.length} Versuchen gefunden.`
+      : `Keine Versuche mehr. Gesucht war ${target.name}.`;
   }
 }
 

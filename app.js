@@ -492,10 +492,10 @@ function updateAttempts() {
   elements.attemptTrack.setAttribute("aria-label", `${guesses.length} von ${MAX_GUESSES} Versuchen`);
 }
 
-function loadTargetImage(breed, breedIndex) {
+function loadTargetImage(breed, breedIndex, solved) {
   if (targetIndex !== breedIndex || !breed.image_url) return;
 
-  const blurAmount = Math.max(0, 20 - guesses.length * 4);
+  const blurAmount = solved ? 0 : Math.max(0, 20 - guesses.length * 4);
   elements.resultImage.style.filter = `blur(${blurAmount}px)`;
   if (requestedImageIndex === breedIndex) return;
 
@@ -527,11 +527,19 @@ function renderGame() {
   elements.resultEyebrow.hidden = !completed;
   elements.resultTitle.hidden = !completed;
   elements.resultDetail.hidden = !completed;
-  loadTargetImage(target, targetIndex);
+  loadTargetImage(target, targetIndex, solved);
 
   if (completed) {
     elements.resultEyebrow.textContent = solved ? "Rätsel gelöst" : "Tagesrätsel beendet";
-    elements.resultTitle.textContent = target.name;
+    const resultName = document.createElement(target.url ? "a" : "span");
+    resultName.className = "breed-name";
+    resultName.textContent = target.name;
+    if (target.url) {
+      resultName.href = target.url;
+      resultName.target = "_blank";
+      resultName.rel = "noopener noreferrer";
+    }
+    elements.resultTitle.replaceChildren(resultName);
     const labels = classificationLabels(target);
     const fciText = labels
       ? `Gruppe ${target.gruppe} ${labels.group} · Sektion ${target.sektion} ${labels.section}`

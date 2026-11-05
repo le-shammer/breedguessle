@@ -16,12 +16,12 @@
       --ink: #F3F0F4;
       --muted: #B1ACB8;
       --brand: #F47A38;
-      --right-bg: #2563EB;
-      --right-ink: #FFFFFF;
-      --near-bg: #D9B525;
-      --near-ink: #292515;
-      --wrong-bg: #DC2626;
-      --wrong-ink: #FFFFFF;
+      --right-bg: #DCEAF8;
+      --right-ink: #244F73;
+      --near-bg: #F3E9C9;
+      --near-ink: #66551F;
+      --wrong-bg: #F1DDDA;
+      --wrong-ink: #75433F;
       --unknown-bg: #3A3740;
       --unknown-ink: #D4CFD9;
       --line: #45414B;
@@ -219,7 +219,8 @@
     }
 
     .suggestion:last-child { border-bottom: 0; }
-    .suggestion.selected { background: var(--right-bg); }
+    .suggestion.selected { color: var(--right-ink); background: var(--right-bg); }
+    .suggestion.selected .suggestion-meta { color: var(--right-ink); }
     .suggestion-name { font-weight: 700; }
     .suggestion-meta { color: #596761; font-size: 13px; }
     .match { color: #93400D; font-weight: 700; }
@@ -372,17 +373,13 @@
     .cell.wrong { color: var(--wrong-ink); background: var(--wrong-bg); }
     .cell.unknown { color: var(--unknown-ink); background: var(--unknown-bg); }
 
-    .cell.right .value,
-    .cell.near .value,
-    .cell.wrong .value { color: #24212A; }
-
     .cell.unknown .value { color: var(--unknown-ink); }
 
     .fci-line { font-size: 9px; line-height: 1.05; }
     .fci-section { color: #39343E; font-size: 8px; line-height: 1.05; overflow-wrap: anywhere; }
 
     .value {
-      color: var(--ink);
+      color: inherit;
       font-size: 12px;
       font-weight: 700;
       font-variant-numeric: tabular-nums;

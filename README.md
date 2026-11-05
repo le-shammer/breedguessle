@@ -30,3 +30,10 @@ python scrape_fci_breeds.py
 ## Tagesauswahl
 
 Pro Jahr wird die Liste mit einem deterministischen, jahresabhängigen Seed gemischt. Der Tag im Jahr wählt den entsprechenden Eintrag aus dieser Permutation. Innerhalb eines Jahres wird daher keine Rasse doppelt gezogen; ein anderes Jahr erzeugt eine andere Reihenfolge. Tipps werden pro lokalem Kalendertag im `localStorage` des Browsers gespeichert.
+
+
+#  reset
+const now = new Date();
+const dateKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+localStorage.removeItem(`breedguessle:${dateKey}`);
+location.reload();
